@@ -25,7 +25,9 @@
       alpha: 0.8,
       font: '10px Arial',
       autoWidth: false,
-      offsetX: 10
+      offsetX: 10,
+      offsetY: 10,
+      rotate: 15
     }, options);
   }
 
@@ -65,7 +67,8 @@
     var width = options.width, 
       height = options.height,
       autoWidth = options.autoWidth,
-      offsetX = options.offsetX;
+      offsetX = options.offsetX,
+      rotate = options.rotate;
 
     canvas.width = width;
     canvas.height = height;
@@ -84,12 +87,15 @@
     ctx.textBaseline = 'bottom';
 
     if (autoWidth) {
-      width = ctx.measureText(text).width + offsetX;
+      var w = ctx.measureText(text).width;
+      width = w + offsetX;
+      height = w * Math.tan((rotate * Math.PI / 180)) + offsetY;
       canvas.width = width;
+      canvas.height = height;
     }
 
     ctx.translate(width * 0.1, height * 0.9); // margin: 10
-    ctx.rotate(15 * -Math.PI / 180); // 15 degree
+    ctx.rotate(rotate * -Math.PI / 180);
     ctx.fillText(text, 0, 0);
 
     return canvas.toDataURL();
