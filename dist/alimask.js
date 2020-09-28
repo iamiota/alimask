@@ -80,8 +80,6 @@
     // ctx.fillStyle = 'white'; // no need because of alipha = 0;
     ctx.fillRect(0, 0, width, height);
 
-    ctx.globalAlpha= options.alpha; // text alpha
-    ctx.fillStyle = options.color;
     ctx.font = options.font;
 
     ctx.textAlign = 'left';
@@ -93,6 +91,10 @@
       height = w * Math.tan((rotate * Math.PI / 180)) + offsetY;
       canvas.width = width;
       canvas.height = height;
+
+      ctx.globalAlpha = options.alpha; // text alpha
+      ctx.fillStyle = options.color;
+      ctx.font = options.font;
     }
 
     ctx.translate(width * 0.1, height * 0.9); // margin: 10
