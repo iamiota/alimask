@@ -23,7 +23,9 @@
       height: 80,
       color: '#ebebeb',
       alpha: 0.8,
-      font: '10px Arial'
+      font: '10px Arial',
+      autoWidth: false,
+      offsetX: 10
     }, options);
   }
 
@@ -61,7 +63,9 @@
     }
     options = mergeOptions(options);
     var width = options.width, 
-      height = options.height;
+      height = options.height,
+      autoWidth = options.autoWidth,
+      offsetX = options.offsetX;
 
     canvas.width = width;
     canvas.height = height;
@@ -79,8 +83,13 @@
     ctx.textAlign = 'left';
     ctx.textBaseline = 'bottom';
 
+    if (autoWidth) {
+      width = ctx.measureText(text).width + offsetX;
+      canvas.width = width;
+    }
+
     ctx.translate(width * 0.1, height * 0.9); // margin: 10
-    ctx.rotate(-Math.PI / 12); // 15 degree
+    ctx.rotate(15 * -Math.PI / 180); // 15 degree
     ctx.fillText(text, 0, 0);
 
     return canvas.toDataURL();
