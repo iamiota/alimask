@@ -68,6 +68,7 @@
       height = options.height,
       autoWidth = options.autoWidth,
       offsetX = options.offsetX,
+      offsetY = options.offsetY,
       rotate = options.rotate;
 
     canvas.width = width;

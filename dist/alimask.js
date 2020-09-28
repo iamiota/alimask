@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2017 hustcc
  * License: MIT
- * Version: v1.0.3
+ * Version: v1.0.4
  * GitHub: https://github.com/hustcc/alimask
 **/
 
@@ -68,6 +68,7 @@
       height = options.height,
       autoWidth = options.autoWidth,
       offsetX = options.offsetX,
+      offsetY = options.offsetY,
       rotate = options.rotate;
 
     canvas.width = width;
